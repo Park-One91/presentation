@@ -1,12 +1,6 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600");
 
-/*
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -27,8 +21,6 @@ section, summary, time, mark, audio, video {
 	text-decoration: none;
 }
 
-
-
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
@@ -43,15 +35,6 @@ body {
 	margin-left: 20%;
 }
 
-
-
-#zzz > li{
-	display: inline;
-	float: left;
-	list-style: none;
-	margin-bottom: -20px;
-}
-
 .qwe {
 	display: flex;
 	text-align: center;
@@ -63,7 +46,6 @@ body {
 	text-align: center;
 	margin-left: 5%;
 }
-
 
 ol, ul {
 	list-style: none;
@@ -815,7 +797,19 @@ input, select, textarea {
 		list-style: none;
 		margin-left: -1rem;
 		padding-left: 0;
-		margin-left: 20%;
+		
+	}
+
+	ul.actions2 {
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		cursor: default;
+		list-style: none;
+		margin-left: -1rem;
+		padding-left: 0;
+		margin-left: 17%;
 	}
 
 		ul.actions li {
