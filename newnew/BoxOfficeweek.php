@@ -114,9 +114,15 @@
                   var str = "";
                   str = str + "<h1>"+$(data).find("movieNm").text()+"</h1>";
                   str = str + "<h2>"+$(data).find("movieNmEn").text()+"</h2>";
-                  str = str + "<p>상영시간 : "+$(data).find("showTm").text()+"분"+"</p>";
-                  str = str + "<ul>";
-                      $(data).find("actor").each(function() {
+                  str = str + "장르 : " + $(data).find("genreNm").text()+"<br>";
+                  str = str + "제작 : " + $(data).find("nations").text()+"<br>";
+                  str = str + "제작사 : " + $(data).find("companyNm").text()+"<br>";
+                  str = str + "제작년도 : " + $(data).find("prdtYear").text()+"<br>";
+                  str = str + "등급 : " + $(data).find("watchGradeNm").text()+"<br>";
+                  str = str + "런닝타임 : " + $(data).find("showTm").text()+"분"+"<br><br>";
+                  str = str + "<p>감독 : " + $(data).find("directors").text()+"</p>";
+                  str = str + "출연 : " + "<ul>";
+                    $(data).find("actor").each(function() {
                           str = str + "<li>"+$(this).find("peopleNm").text()+"</li>";
                           console.log(str);
                       });
@@ -218,7 +224,14 @@
                                         <option value="2014">2014년</option>
                                         <option value="2013">2013년</option>
                                         <option value="2012">2012년</option>
-                                        <option value="2012">- 연도 추가 -</option>
+                                        <option value="2011">2011년</option>
+                                        <option value="2010">2010년</option>
+                                        <option value="2009">2009년</option>
+                                        <option value="2008">2008년</option>
+                                        <option value="2007">2007년</option>
+                                        <option value="2006">2006년</option>
+                                        <option value="2005">2005년</option>
+                                        <option value="2004">2004년</option>
                                     </select> 
                                     
                                     <select class="sel2" id="selMon">

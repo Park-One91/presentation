@@ -29,6 +29,29 @@ body {
 	line-height: 1;
 }
 
+
+/* 각 별들의 기본 설정 */
+.starR{
+  display: inline-block;
+  width: 35px;
+  height: 30px;
+  color: transparent;
+  text-shadow: 0 0 0 #f0f0f0;
+  font-size: 1.8em;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/* 별 이모지에 마우스 오버 시 */
+.starR:hover {
+  text-shadow: 0 0 0 #ccc;
+}
+
+/* 별 이모지를 클릭 후 class="on"이 되었을 경우 */
+.starR.on{
+  text-shadow: 0 0 0 #ffbc00;
+}
+
 .low {
 display :inline;
 }
@@ -70,6 +93,12 @@ display :inline;
 .asd {
 	display: flex;
 	text-align: center;
+	
+}
+.asd1 {
+	display: flex;
+	text-align: center;
+	margin-left: 3.5%;
 	
 }
 
@@ -465,6 +494,9 @@ input, select, textarea {
 
 					form > .fields > .field.quarter {
 						width: calc(40% - 1.5rem);
+					}
+					form > .fields > .field.comment {
+						width: calc(20% - 1.5rem);
 					}
 
 		}
@@ -1476,7 +1508,7 @@ input, select, textarea {
 				-ms-transition-delay: 0.25s;
 				transition-delay: 0.25s;
 				padding: 3rem 2rem;
-				max-height: 150rem;
+				max-height: 900rem;
 				overflow: visible;
 			}
 

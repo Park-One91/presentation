@@ -57,6 +57,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+        #msg1 {
+					border-radius: 5px;
+              border: 1px solid white;
+              padding: 10px;
+              margin-top: 20px;
+              margin-bottom: 20px;
+              width: 100%;
+              height: 100%;
+              font-size: 14px;
+              text-align: left;
+              float: right;
+              font-size : 100%;
+        }
+    </style>
 	</head>
 
 	<body class="is-preload">
@@ -71,24 +86,16 @@
 						</div>
 						<div class="content">
 							<div class="inner">
-								<h1>Make Review</h1>
+								<h1>Review</h1>
 								<br>
 								<br>
 								<article id="contact">
 								<form action="ReviewWrite_result.php" enctype="multipart/form-data" method="post">
 										<div class="fields">
-											<div class="field long">	
-												<select id="selMon">
-													<option value="01">영화제목을 선택하세요</option>
-													<option value="01">API 영화제목 기능 추가 예정</option>
-												</select>
-											</div>
+											
 											<div class="field quarter">
 												<input type="text" name="writer" id="writer" value="<?php echo $_SESSION["name"]?>"/>
-											</div>
-											<div class="field long">
-												<input type="text" name="title" id="title" placeholder="Title"/>
-											</div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+											</div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 											<div class="starRev">
 												<!-- 편의 상 가장 첫번째의 별은 기본으로 class="on"이 되게 설정해주었습니다. -->
 												<span class="starR on">★</span>
@@ -98,13 +105,87 @@
 												<span class="starR">★</span>
 											</div>
 											<div class="field">
+												<input type="text" name="title" id="title" placeholder="Title"/>
+											</div>
+											<div class="field">
 												<textarea name="content" id="content" rows="8" placeholder="Contents"></textarea>
 											</div>
+
+											<section>
+												<div class="table-wrapper">
+													<table>
+														<thead>
+															<tr>
+		                          <th></th>
+															<th></th>
+															<th></th>
+															<th></th>
+														</tr>
+											</thead>
+										
+											<?php	
+												$query = "select * FROM comment ORDER BY idx desc LIMIT $start, $listSize";
+												$result = $con->query($query);		
+												while($row = $result->fetch_assoc())
+												{
+												?>   
+													<tbody>
+														<tr>                                
+															<td><?=$row["idx"]?></td>
+															<td><?=$row["name"]?></td>
+															<td><?=$row["comment"]?></td>
+															<td><?=$row["date"]?></td>
+														</tr>
+													</tbody>
+											<?php
+												}
+												?>
+            
+										</table>
+
+
+										
+										
+										
+											<div>
+
+											
+											<div>
+                                    <div id="sub1_2_divPaging1">
+                                      <div style="font-size:0.8em;">◁</div>
+                                      <?php									
+                                        for ($i = $startPage; $i <= $endPage; $i++) {
+                                        $active = $page == $i ? "disabled" : "";
+                                        echo "<div class='pagingbox'>
+                                        <a  ".$active."' href='./ReviewShow.php?page=".$i."'>".$i."</a>
+                                        </div>";
+                                        }
+                                       ?>
+                                      <div style="font-size:0.8em;">▷</div>
+                                </div>
+											
+													
+											</div>
+											
+													
+									</div>
+
+									<br>
+
+									<div class="asd1">
+												<input type="text" id="searchInput" placeholder="댓글을 입력하세요">&nbsp&nbsp
+												<button id="searchButton">Comment</button>
+												<br>
+												<br>
+												<div id="searchResults"></div>
+										</div>
+													
+
+								</section>
 											
 										</div>
 										<ul class="actions">
-											<li><input type="submit" value="Submit" class="primary" /></li>
-											<li><input type="reset" value="Reset" /></li>
+											<li><input type="submit" value="back" class="primary" /></li>
 										</ul>
 									</form>
 								</article>

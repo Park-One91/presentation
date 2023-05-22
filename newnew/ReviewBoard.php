@@ -196,7 +196,7 @@
 														<tr>                                
 															<td><?=$row["idx"]?></td>
 															<td><a href="#detail"><?=$row["movie"]?></a></td>
-															<td><?=$row["title"]?></td>
+															<td><a href=".\ReviewShow.php"><?=$row["title"]?></a></td>
 															<td><?=$row["writer"]?></td>
 															<td><?=$row["date"]?></td>
 															<td><?=$row["hit"]?></td>

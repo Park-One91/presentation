@@ -13,6 +13,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 
@@ -31,12 +32,13 @@
 								<h1>search</h1>
 								<div class="search">
 									
-									<form method="POST" action="search_result.php">
-									<div class="asd">
-										<input type="text" id="joinId" name="id" placeholder="영화제목을 입력하세요"> &nbsp&nbsp
-										<button onclick="idCheck()" class="favorite styled" type="button">검색</button>
+										<div class="asd">
+											<input type="text" id="searchInput" placeholder="영화를 찾아 보세요">&nbsp&nbsp
+											<button id="searchButton">검색</button>
+											<br>
+											<br>
+											<div id="searchResults"></div>
 										</div>
-									</form>
 									
 								</div>
 							</div>
@@ -127,6 +129,13 @@
 				<!-- Main -->
 				<div id="main">
 
+				<!-- detail -->
+				<article id="detail">
+                        <h2 class="major">detail</h2>
+                        <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+                        <div class="box3"></div>
+                    </article>
+
 	        <!-- Log out -->
 						<article id="logout">
 							<h2 class="major">Log Out</h2>
@@ -158,7 +167,9 @@
 			<!-- BG -->
 			<div id="bg"></div>
 
-			<!-- Scripts -->
+			<!-- JavaScript 및 jQuery, AJAX 라이브러리 연결 -->
+			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    	<script src="assets/js/script.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
@@ -167,13 +178,13 @@
 
 	</body>
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
     function idCheck() {
 		var id = document.getElementById('joinId').value;		
 		location.href="id_check.php?id="+id;
     //alert(name);
     //document.getElementById('joinId').value = '';
     }
-  </script>
+  </script> -->
 
 </html>

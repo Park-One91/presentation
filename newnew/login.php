@@ -38,8 +38,8 @@
 										</div>
 										<br>
 										<ul class="actions2">
-											<li><input id="btn" type="submit" name="demo-name" id="demo-name" value="&nbsp&nbsp로그인&nbsp&nbsp"></li>
-											<li><a href=".\join.php" class="button">회원가입</a></li>
+											<li><input id="btn" type="submit" name="demo-name" id="demo-name" value="&nbsp&nbsp Login &nbsp&nbsp"></li>
+											<li><a href=".\join.php" class="button">Join</a></li>
 										</ul>
 									</p>
 								</form>
