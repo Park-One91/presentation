@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Information</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .movie {
+      margin-bottom: 20px;
+    }
+    .movie-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .movie-info {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Movie Information</h1>
+    <div class="movie">
+      <h2 class="movie-title">Movie Title</h2>
+      <p class="movie-info">제목: <span id="movieNm"></span></p>
+      <p class="movie-info">영문제목: <span id="movieNmEn"></span></p>
+      <p class="movie-info">개봉: <span id="openDt"></span></p>
+      <p class="movie-info">장르: <span id="genreAlt"></span></p>
+      <p class="movie-info">감독: <span id="peopleNm"></span></p>
+
+    </div>
+  </div>
+
+  <script>
+    // API 요청을 보내고 응답을 처리하는 함수
+    function fetchMovieInfo() {
+      const apiUrl = 'http://www.kobis.or.kr/kobisopenapi/webservice/soap/movie/searchMovieList.json';
+      const apiKey = 'f0ac6765a39b0612ec26e627353a848f';
+      const movieCode = '20124079';
+
+      const url = `${apiUrl}?key=${apiKey}&movieCd=${movieCode}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const movie = data.movieInfoResult.movieInfo;
+
+          // 영화 정보를 DOM 요소에 설정
+          document.getElementById('movieNm').textContent = movie.movieNm;
+          document.getElementById('movieNmEn').textContent = movie.movieNmEn[0].movieNmEn;
+          document.getElementById('openDt').textContent = movie.openDt[0].openDt;
+          document.getElementById('genreAlt').textContent = movie.genreAlt[0].genreAlt;
+          document.getElementById('peopleNm').textContent = movie.peopleNm[0].peopleNm;
+          
+        })
+        .catch(error => {
+          console.log('Error occurred:', error);
+        });
+    }
+
+    // 페이지 로드 시 영화 정보 요청
+    fetchMovieInfo();
+  </script>
+</body>
+</html>
