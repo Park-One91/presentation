@@ -22,7 +22,7 @@
         #msg {
               border-radius: 5px;
               border: 1px solid white;
-              padding: 10px;
+              padding: 15px;
               margin-top: 20px;
               margin-bottom: 20px;
               width: 100%;
@@ -90,7 +90,7 @@
                             str = str + rankInten + ") : ";
                             
                             str = str + $(this).find("movieNm").text();
-                            str = str + "  <관객수 :  " + $(this).find("audiAcc").text() + " 명>" + "</a><br><br>";
+                            str = str + "  &nbsp&nbsp&nbsp<관객수 :  " + $(this).find("audiAcc").text() + " 명>" + "</a><br><br>";
                         });
                         //결과출력
                         $("#msg").html(str);
@@ -116,12 +116,12 @@
                   var str = "";
                   str = str + "<h1>"+$(data).find("movieNm").text()+"</h1>";
                   str = str + "<h2>"+$(data).find("movieNmEn").text()+"</h2>";
-                  str = str + "장르 : " + $(data).find("genreNm").text()+"<br>";
-                  str = str + "제작 : " + $(data).find("nations").text()+"<br>";
-                  str = str + "제작사 : " + $(data).find("companyNm").text()+"<br>";
-                  str = str + "제작년도 : " + $(data).find("prdtYear").text()+"<br>";
                   str = str + "등급 : " + $(data).find("watchGradeNm").text()+"<br>";
-                  str = str + "런닝타임 : " + $(data).find("showTm").text()+"분"+"<br><br>";
+                  str = str + "런닝타임 : " + $(data).find("showTm").text()+"분"+"<br>";
+                  str = str + "장르 : " + $(data).find("genreNm").text()+"<br>";
+                  str = str + "제작국가 : " + $(data).find("nations").text()+"<br>";
+                  str = str + "제작년도 : " + $(data).find("prdtYear").text()+"년"+"<br>";
+                  str = str + "제작사 : " + $(data).find("companyNm").text()+"<br><br>";
                   str = str + "<p>감독 : " + $(data).find("directors").text()+"</p>";
                   str = str + "출연 : " + "<ul>";
                       $(data).find("actor").each(function() {
@@ -202,12 +202,12 @@
 						<div class="content">
 							<div class="inner">
 							<h1>Box Office <span style="color: #f77777;">a Day</span></h1>
-
+                            <p id="text">🎞날짜를 선택하여 해당 날짜의 박스오프스 순위를 확인하세요🎞</p>
                             <ul class="actions">
 								<li><a href=".\BoxOfficeday.php" onclick="event.preventDefault();" class="button primary">일간</a></li>
 								<li><a href=".\BoxOfficeweek.php" class="button">주간</a></li>
 							</ul>
-                            <p id="text">🎞날짜를 선택하여 해당 날짜의 박스오프스 순위를 확인하세요🎞</p>
+                            
 
                     <form name="myform">
                         <div class="field">
@@ -249,7 +249,7 @@
                                 <option value="11">11월</option>
                                 <option value="12">12월</option>
                             </select>
-                            
+                            <!-- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp -->
                             <select class="sel2" id="selDay">
                                 <option value="01">1일</option>
                                 <option value="02">2일</option>
@@ -383,7 +383,6 @@
                         <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
                         <div class="box3"></div>
                     </article>
-                
                                 
                     <!-- Log out -->
 					<article id="logout">

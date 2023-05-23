@@ -58,97 +58,6 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- API 데이터 가져오기 -->
-
-		<!-- 날짜 선택 동작 -->
-		<script>
-				// 상세정보 미리 표시
-				function result() {
-						var url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=f5eef3421c602c6cb7ea224104795888";
-								url = url + "&targetDt="+ $("#txtYear").val() +  $("#selMon").val() + $("#selDay").val();
-								console.log(url);
-								// ajax 통신
-								$.ajax({
-										type : "GET" , //요청방식
-										url : url , //주소
-										success :  function(data) {
-												//출력변수
-												var str = "";
-												//집계가 안 됐을 경우
-												if($(data).find("dailyBoxOffice").text()=="") {
-														alert("집계가 완료되지 않았습니다");
-														return;
-												}
-												$(data).find("dailyBoxOffice").each(function() {
-														//링크 만들기
-														str = str + "<a href='#detail' onclick='javascript:show("+$(this).find("movieCd").text()+")'>"
-													
-														//순위
-														str = str + $(this).find("rank").text() + "위 (";
-														//증감
-														var rankInten = parseInt($(this).find("rankInten").text());
-														if(rankInten > 0) str = str + "▲";
-														else if(rankInten < 0) str = str + "▼";
-														str = str + rankInten + ") : ";
-														
-														str = str + $(this).find("movieNm").text();
-														str = str + "  <관객수 :  " + $(this).find("audiAcc").text() + " 명>" + "</a><br>";
-												});
-												//결과출력
-												$("#msg").html(str);
-										} ,//성공시
-										error : function() {
-												alert("값을 가지고 올 수 없습니다");
-										} //실패시
-								});
-				}
-
-				//상세정보
-				function show(movieCd) {
-						var url = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key=f5eef3421c602c6cb7ea224104795888";
-						url = url + "&movieCd=" + movieCd;
-							//결과 위치
-							$(".box3").text("");
-						
-						$.ajax({
-							type : "GET" , 
-							url : url , 
-							success : function(data) {
-									var str = "";
-									str = str + "<h1>"+$(data).find("movieNm").text()+"</h1>";
-									str = str + "<h2>"+$(data).find("movieNmEn").text()+"</h2>";
-									str = str + "<p>상영시간 : "+$(data).find("showTm").text()+"분"+"</p>";
-									str = str + "<ul>";
-											$(data).find("actor").each(function() {
-													str = str + "<li>"+$(this).find("peopleNm").text()+"</li>";
-													console.log(str);
-											});
-											str = str + "</ul>";
-											$(".box3").append(str);
-							} ,
-							error : function() {
-									alert("자료를 가지고 올 수 없습니다");
-							}
-						});
-					}
-
-				$(document).ready(function() {
-						
-						// 어제 날짜가 기본으로 나오도록
-						init();
-						result();
-
-						
-				});
-		</script>
-
-<!-- API 데이터 가져오기 -->
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
   </head>
 	
   <body class="is-preload">
@@ -196,7 +105,7 @@
 														<tr>                                
 															<td><?=$row["idx"]?></td>
 															<td><a href="#detail"><?=$row["movie"]?></a></td>
-															<td><a href=".\ReviewShow.php"><?=$row["title"]?></a></td>
+															<td><a href=".\ReviewShow.php?idx=<?=$row["idx"]?>"><?=$row["title"]?></a></td>
 															<td><?=$row["writer"]?></td>
 															<td><?=$row["date"]?></td>
 															<td><?=$row["hit"]?></td>
@@ -208,12 +117,7 @@
             
 										</table>
 
-
-										
-										
-										
 											<div>
-
 											
 											<div>
                                     <div id="sub1_2_divPaging1">

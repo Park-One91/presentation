@@ -89,7 +89,7 @@
                             str = str + rankInten + ") : ";
                             
                             str = str + $(this).find("movieNm").text();
-                            str = str + "  <관객수 :  " + $(this).find("audiAcc").text() + " 명>" + "</a><br><br>";
+                            str = str + "  &nbsp&nbsp&nbsp<관객수 :  " + $(this).find("audiAcc").text() + " 명>" + "</a><br><br>";
                         });
                         //결과출력
                         $("#msg").html(str);
@@ -201,12 +201,12 @@
 						<div class="content">
 							<div class="inner">
 							<h1>Box Office <span style="color: #f77777;">a Week</span></h1>
-								
+							<p id="text">🎞날짜를 선택하여 해당 날짜의 박스오프스 순위를 확인하세요🎞</p>	
 							<ul class="actions">
 								<li><a href=".\BoxOfficeday.php" class="button">일간</a></li>
 								<li><a href=".\BoxOfficeweek.php" onclick="event.preventDefault();" class="button primary">주간</a></li>
 							</ul>
-                            <p id="text">🎞날짜를 선택하여 해당 날짜의 박스오프스 순위를 확인하세요🎞</p>
+                            
 
                             <form name="myform">
                                 <div class="field">

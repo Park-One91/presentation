@@ -15,8 +15,9 @@
             //세션 변수 등록
             $_SESSION['login_check'] = "true";        
             $_SESSION['name'] = $row["name"] ;               
+            $_SESSION['check'] = $row["name"] ;               
         }
-   if($loginCheck == true)
+    if($loginCheck == true)
         {
             echo "<script>alert('로그인 되었습니다');</script>"; 
             echo("<script>location.href='./index-afterlogin.php';</script>");

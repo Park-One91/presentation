@@ -13,7 +13,7 @@
     $row = mysqli_fetch_array($result);
     $nums = $row['size'];
     //화면에 목록 줄수
-    $listSize = 6;
+    $listSize = 10;
     //페이지 표시 최대 숫자
     $blockSize = 10; // 추가 !!
     $prevBlock="";
@@ -58,97 +58,6 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- API 데이터 가져오기 -->
-
-		<!-- 날짜 선택 동작 -->
-		<script>
-				// 상세정보 미리 표시
-				function result() {
-						var url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=f5eef3421c602c6cb7ea224104795888";
-								url = url + "&targetDt="+ $("#txtYear").val() +  $("#selMon").val() + $("#selDay").val();
-								console.log(url);
-								// ajax 통신
-								$.ajax({
-										type : "GET" , //요청방식
-										url : url , //주소
-										success :  function(data) {
-												//출력변수
-												var str = "";
-												//집계가 안 됐을 경우
-												if($(data).find("dailyBoxOffice").text()=="") {
-														alert("집계가 완료되지 않았습니다");
-														return;
-												}
-												$(data).find("dailyBoxOffice").each(function() {
-														//링크 만들기
-														str = str + "<a href='#detail' onclick='javascript:show("+$(this).find("movieCd").text()+")'>"
-													
-														//순위
-														str = str + $(this).find("rank").text() + "위 (";
-														//증감
-														var rankInten = parseInt($(this).find("rankInten").text());
-														if(rankInten > 0) str = str + "▲";
-														else if(rankInten < 0) str = str + "▼";
-														str = str + rankInten + ") : ";
-														
-														str = str + $(this).find("movieNm").text();
-														str = str + "  <관객수 :  " + $(this).find("audiAcc").text() + " 명>" + "</a><br>";
-												});
-												//결과출력
-												$("#msg").html(str);
-										} ,//성공시
-										error : function() {
-												alert("값을 가지고 올 수 없습니다");
-										} //실패시
-								});
-				}
-
-				//상세정보
-				function show(movieCd) {
-						var url = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.xml?key=f5eef3421c602c6cb7ea224104795888";
-						url = url + "&movieCd=" + movieCd;
-							//결과 위치
-							$(".box3").text("");
-						
-						$.ajax({
-							type : "GET" , 
-							url : url , 
-							success : function(data) {
-									var str = "";
-									str = str + "<h1>"+$(data).find("movieNm").text()+"</h1>";
-									str = str + "<h2>"+$(data).find("movieNmEn").text()+"</h2>";
-									str = str + "<p>상영시간 : "+$(data).find("showTm").text()+"분"+"</p>";
-									str = str + "<ul>";
-											$(data).find("actor").each(function() {
-													str = str + "<li>"+$(this).find("peopleNm").text()+"</li>";
-													console.log(str);
-											});
-											str = str + "</ul>";
-											$(".box3").append(str);
-							} ,
-							error : function() {
-									alert("자료를 가지고 올 수 없습니다");
-							}
-						});
-					}
-
-				$(document).ready(function() {
-						
-						// 어제 날짜가 기본으로 나오도록
-						init();
-						result();
-
-						
-				});
-		</script>
-
-<!-- API 데이터 가져오기 -->
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
   </head>
 	
   <body class="is-preload">
@@ -163,10 +72,10 @@
 						</div>
 						<div class="content">
 							<div class="inner">
-							<h1><span style="color: #f77777;">My</span> Review List</h1>
+								<h1>My Review</span></h1>
 								
 								<ul class="actions">
-										<li><a href=".\ReviewBoard.php" class="button2">ALL</a></li>
+										<li><a href=".\ReviewBoard.php" class="button2">All</a></li>		
 										<li><a href="#" class="button primary2">MY</a></li>
 										<li><button  class="button small2" onclick="boardWrite()" type="button">Make Review</button></li>
 								</ul>
@@ -189,31 +98,35 @@
 											<?php	
 												$query = "select * FROM board ORDER BY idx desc LIMIT $start, $listSize";
 												$result = $con->query($query);		
-												while($row = $result->fetch_assoc())
-												{
-												?>   
+												while($row = $result->fetch_assoc()) {
+													// writer 값이 현재 세션의 값과 같은 경우에만 데이터를 표시
+													if ($row["writer"] == $_SESSION['name']) {
+												?>
 													<tbody>
 														<tr>                                
-															<td><?=$row["idx"]?></td>
-															<td><a href="#detail"><?=$row["movie"]?></a></td>
-															<td><?=$row["title"]?></td>
-															<td><?=$row["writer"]?></td>
-															<td><?=$row["date"]?></td>
-															<td><?=$row["hit"]?></td>
+															<td><?= $row["idx"] ?></td>
+															<td><a href="#detail"><?= $row["movie"] ?></a></td>
+															<td><a href=".\ReviewShow.php?idx=<?= $row["idx"] ?>"><?= $row["title"] ?></a></td>
+															<td><?= $row["writer"] ?></td>
+															<td><?= $row["date"] ?></td>
+															<td><?= $row["hit"] ?></td>
 														</tr>
 													</tbody>
-											<?php
+												<?php
+													}
 												}
 												?>
             
 										</table>
 
 
-										
-										
-										
-											<div>
 
+
+
+
+
+
+											<div>
 											
 											<div>
                                     <div id="sub1_2_divPaging1">
@@ -227,12 +140,14 @@
                                         }
                                        ?>
                                       <div style="font-size:0.8em;">▷</div>
-                                </div>
+                                		</div>
 											
 													
 											</div>
 											
 													
+
+											
 									</div>
 
 									<br>
@@ -332,11 +247,11 @@
 							<article id="detail">
 								<h2 class="major">detail</h2>
 								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-								 <div class="box3"></div>
+								<div class="box3"></div>
 							</article>
 
           <!-- Log out -->
-					<article id="logout">
+							<article id="logout">
 								<h2 class="major">Log Out</h2>
 								<form method="post" action="#">
 									<div class="fields">
@@ -346,14 +261,13 @@
 									</div>
 									<ul class="actions">
 										<li><input type="button" onclick="location.href='logout.php'" value="Log Out" class="primary" /></li>
-										<li><input type="button" onclick="location.href='ReviewBoard_mine.php'" value="Back"/></li>
+										<li><input type="button" onclick="location.href='ReviewBoard.php'" value="Back"/></li>
 									</ul>
 								</form>
 							</article>
-							
 
+    
 					</div>
-
 
 					<!-- Footer -->
 					<footer id="footer">

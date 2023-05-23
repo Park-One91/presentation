@@ -56,6 +56,10 @@ body {
 display :inline;
 }
 
+.color {
+	color: #a4a2a6;
+}
+
 .point {
 	display: flex;
 	text-align: center;
@@ -75,12 +79,12 @@ display :inline;
 }
 
 .sel1 {
-	width: calc(96.2% - 1.5rem);
+	width: calc(100% - 1.5rem);
 	display: inline;
 }
 
 .sel2 {
-	width: calc(50% - 1.5rem);
+	width: calc(51.5% - 1.5rem);
 	display: inline;
 }
 
@@ -429,6 +433,7 @@ input, select, textarea {
 			flex-wrap: wrap;
 			width: calc(100% + 3rem);
 			margin: -1.5rem 0 2rem -1.5rem;
+			
 		}
 
 			form > .fields > .field {
@@ -442,6 +447,7 @@ input, select, textarea {
 				flex-shrink: 0;
 				padding: 1.5rem 0 0 1.5rem;
 				width: calc(100% - 1.5rem);
+				
 			}
 
 				form > .fields > .field.long {
@@ -478,6 +484,7 @@ input, select, textarea {
 				form > .fields > .field {
 					padding: 1.5rem 0 0 1.5rem;
 					width: calc(100% - 1.5rem);
+					
 				}
 
 				form > .fields > .field.long {
@@ -1269,6 +1276,13 @@ input, select, textarea {
 			height: 2.0625rem;
 			line-height: 2.0625rem;
 			
+		}
+
+		.button.primary3 {
+			background-color: #ffffff;
+			color: #1b1f22 !important;
+			font-weight: 600;
+			margin-left: 80%;
 		}
 
 		input[type="submit"].disabled, input[type="submit"]:disabled,

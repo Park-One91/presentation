@@ -55,8 +55,16 @@
 									<div class="field">
 										<input type="text" name="hp" id="hp" placeholder=" ㆍ HP"/>
 									</div><br>
-									<div class="field">
+									<div class="field third">
 										<input type="text" name="email" id="email" placeholder="E-Mail"/>
+									</div>
+									<div class="field third">
+										<select name="email_domain">
+											<option value="-">choose your email</option>	
+											<option value="1">naver.com</option>
+											<option value="2">gmail.com</option>
+											<option value="3">daum.net</option>
+										</select>
 									</div><br>
 
 									<input id="btn" type="submit" value="JOIN"><br/>

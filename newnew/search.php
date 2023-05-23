@@ -33,16 +33,16 @@
 								<div class="search">
 									
 										<div class="asd">
-											<input type="text" id="searchInput" placeholder="영화를 찾아 보세요">&nbsp&nbsp
+											<input type="text" id="searchInput" placeholder="영화를 찾아 보세요" onkeypress="handleKeyPress(event)" required>
 											<button id="searchButton">검색</button>
-											<br>
-											<br>
-											<div id="searchResults"></div>
 										</div>
-									
+										<div class="field" id="searchResults"></div>									
 								</div>
 							</div>
 						</div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->						
+						<!-- 하단 메뉴버튼 영역 -->
 						<nav>
 							<ul>
 							<!-- 메뉴 홈 버튼 세션  -->
@@ -124,6 +124,7 @@
 						 ?></li>
 							</ul>
 						</nav>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->						
 					</header>
 
 				<!-- Main -->
@@ -131,10 +132,10 @@
 
 				<!-- detail -->
 				<article id="detail">
-                        <h2 class="major">detail</h2>
-                        <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-                        <div class="box3"></div>
-                    </article>
+        	<h2 class="major">detail</h2>
+          <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+          <div class="box3"></div>
+        </article>
 
 	        <!-- Log out -->
 						<article id="logout">
@@ -156,7 +157,6 @@
                     
         </div>
 
-
 				<!-- Footer -->
 					<footer id="footer">
 						<p class="copyright">&copy; Made By P.D.Y</p>
@@ -169,22 +169,19 @@
 
 			<!-- JavaScript 및 jQuery, AJAX 라이브러리 연결 -->
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    	<script src="assets/js/script.js"></script>
+    	<script src="assets/js/search.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<script>
+				function handleKeyPress(event) {
+					if (event.keyCode === 13) {
+						event.preventDefault(); // 기본 동작인 폼 제출을 방지합니다.
+						searchMovie($('#searchInput').val()); // searchMovie 함수 호출
+					}
+				}
+			</script>
 	</body>
-
-	<!-- <script type="text/javascript">
-    function idCheck() {
-		var id = document.getElementById('joinId').value;		
-		location.href="id_check.php?id="+id;
-    //alert(name);
-    //document.getElementById('joinId').value = '';
-    }
-  </script> -->
-
 </html>
