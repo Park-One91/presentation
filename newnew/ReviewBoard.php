@@ -89,6 +89,7 @@
 								<h1>Review</span></h1>
 								
 								<ul class="actions">
+										<li><a href=".\ReviewBoard_top.php" class="button2">TOP 5</a></li>
 										<li><a href="#" class="button primary2">ALL</a></li>
 										<li><a href=".\ReviewBoard_mine.php" class="button2">MY</a></li>
 										<li><button  class="button small2" onclick="boardWrite()" type="button">Make Review</button></li>
@@ -101,10 +102,8 @@
 											<thead>
 												<tr>
                           <th>No</th>
-                          <th>Movie</th>
+                          <th>Writer</th>
 													<th>Title</th>
-													<th>Writer</th>
-													<th>Date</th>
 													<th>Hit</th>
 												</tr>
 											</thead>
@@ -118,10 +117,9 @@
 													<tbody>
 														<tr>                                
 															<td><?=$row["idx"]?></td>
-															<td><a href="#detail"><?=$row["movie"]?></a></td>
-															<td><a href=".\ReviewShow.php?idx=<?=$row["idx"]?>"><?=$row["title"]?></a></td>
+															<!-- <td><a href="#detail"><?=$row["movie"]?></a></td> -->
 															<td><?=$row["writer"]?></td>
-															<td><?=$row["date"]?></td>
+															<td><a href=".\ReviewShow.php?idx=<?=$row["idx"]?>"><?=$row["title"]?></a></td>
 															<td><?=$row["hit"]?></td>
 														</tr>
 													</tbody>

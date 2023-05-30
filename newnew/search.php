@@ -46,6 +46,7 @@
 								<div class="search">
 									
 										<div class="asd">
+											<!-- 엔터키로 검색하기 -->
 											<input type="text" id="searchInput" placeholder="영화를 찾아 보세요" onkeypress="handleKeyPress(event)" required>
 											<button id="searchButton">검색</button>
 										</div>

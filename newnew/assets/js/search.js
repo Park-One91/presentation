@@ -31,12 +31,13 @@ function searchMovie(query) {
             var originalTitle = movie.original_title;
             var releaseYear = movie.release_date.substring(0, 4);
             var posterUrl = 'https://image.tmdb.org/t/p/w300' + movie.poster_path;
-            var movieElement = '<div><h3><a href="#" onclick="//searchMovie(' + movie.id + ', event)">' + title + '</a></h3>';
+            var movieElement = '<div><h3><a href="#" onclick="tail(' + movie.id + '); return false;">' + title + '</a></h3>';
             if (title !== originalTitle) {
               movieElement += '<p>원어 제목: ' + originalTitle + '</p>';
             }
-            movieElement += '<p>개봉 연도: ' + releaseYear + '</p>';
             movieElement += '<img src="' + posterUrl + '" alt="영화 포스터"></div>'; // 포스터 이미지 추가
+            movieElement += '<p>개봉 연도: ' + releaseYear + '</p>';
+            
             $('#searchResults').append(movieElement);
           }
         } else {

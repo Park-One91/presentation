@@ -394,7 +394,6 @@
                     <!-- detail -->
                     <article id="detail">
                         <h2 class="major">detail</h2>
-                        <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
                         <div class="box3"></div>
                     </article>
                 

@@ -1,7 +1,9 @@
 <?php
     $con = mysqli_connect("localhost", "pdy1201", "AA1205dnflwlq!!", "pdy1201");
-		// $con = mysqli_connect("localhost", "root", "qwer", "web_booboon");
-    mysqli_query($con,'SET NAMES utf8');	
+		mysqli_query($con,'SET NAMES utf8');
+		$query = "SELECT * FROM board ORDER BY hit DESC LIMIT 5"; // hit을 기준으로 내림차순 정렬하고 최대 5개 항목을 가져옴
+		$result = $con->query($query);	
+		
     //세션 데이터에 접근하기 위해 세션 시작
     if (!session_id()) 
       {
@@ -89,9 +91,9 @@
 								<h1>My Review</span></h1>
 								
 								<ul class="actions">
-										<li><a href=".\ReviewBoard_top.php" class="button2">TOP 5</a></li>
+										<li><a href="#" class="button primary2">TOP 5</a></li>
 										<li><a href=".\ReviewBoard.php" class="button2">All</a></li>		
-										<li><a href="#" class="button primary2">MY</a></li>
+										<li><a href=".\ReviewBoard_mine.php" class="button2">MY</a></li>
 										<li><button  class="button small2" onclick="boardWrite()" type="button">Make Review</button></li>
 								</ul>
 								
@@ -116,14 +118,16 @@
 													if ($row["writer"] == $_SESSION['name']) {
 												?>
 													<tbody>
-														<tr>                                
-															<td><?= $row["idx"] ?></td>
-															<td><a href="#detail"><?= $row["movie"] ?></a></td>
-															<td><a href=".\ReviewShow.php?idx=<?= $row["idx"] ?>"><?= $row["title"] ?></a></td>
-															<td><?= $row["writer"] ?></td>
-															<td><?= $row["date"] ?></td>
-															<td><?= $row["hit"] ?></td>
-														</tr>
+														<?php
+														while ($row = mysqli_fetch_assoc($result)) {
+															echo "<tr>";
+															echo "<td>" . $row['idx'] . "</td>";
+															echo "<td><a href=\".\ReviewShow.php?idx=" . $row['idx'] . "\">" . $row['title'] . "</a></td>";
+															echo "<td>" . $row['writer'] . "</td>";
+															echo "<td>" . $row['hit'] . "</td>";
+															echo "</tr>";
+														}
+														?>
 													</tbody>
 												<?php
 													}
@@ -132,7 +136,9 @@
             
 										</table>
 
-
+										<?php
+											mysqli_close($con);
+										?>
 
 
 

@@ -2,7 +2,7 @@
     $id = $_POST['id'];
     $pw = $_POST['pw'];
     $con = mysqli_connect("localhost", "pdy1201", "AA1205dnflwlq!!", "pdy1201", "3306");
-    // $con = mysqli_connect("localhost", "root", "qwer", "web_booboon");
+    //$con = mysqli_connect("localhost", "root", "qwer", "web_booboon");
     mysqli_query($con,'SET NAMES utf8');
     //세션 시작
 	session_start();

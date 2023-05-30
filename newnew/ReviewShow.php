@@ -7,7 +7,11 @@
     {
       session_start();
     }
-  $idx = $_GET['idx'];                                             
+  $idx = $_GET['idx'];
+	$update_query = "UPDATE board SET hit = hit + 1 WHERE idx = ?";
+    $update_statement = mysqli_prepare($con, $update_query);
+    mysqli_stmt_bind_param($update_statement, "i", $idx);
+    mysqli_stmt_execute($update_statement);                                             
   $sql = "select * from board where idx ='$idx'"; 
   $result = mysqli_query($con, $sql); 
   $row = mysqli_fetch_array($result);  
@@ -61,17 +65,17 @@
 											
 										<!-- 작성자 이름과 제목 -->
 											<div class="field quarter">
-												<pre><code><?=$title?><br>- <?=$writer?> -</code></pre>
+												<pre><code><h2><?=$title?></h2>- <?=$writer?> -</code></pre>
 											</div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 											
 											<!-- 별점 레이아웃 - 첫번째 별점은 항상 표시되게 on으로 -->
-											<div class="starRev">
+											<!-- <div class="starRev">
 												<span class="starR on">★</span>
 												<span class="starR">★</span>
 												<span class="starR">★</span>
 												<span class="starR">★</span>
 												<span class="starR">★</span>
-											</div>
+											</div>/ -->
 											<br>
 											<div class="field">
 											<pre><code><?=$content?></code></pre>
@@ -84,7 +88,7 @@
 												if($_SESSION['name']==$row["writer"])
 												{
 												?>				
-												<button type="button" class="btn_edit gray" onclick="location.href='/newnew/ReviewEdit.php?idx=<?=$idx?>'; return false;"> edit</button> 
+												<button type="button" class="btn_edit gray" onclick="location.href='/ReviewEdit.php?idx=<?=$idx?>'; return false;"> edit</button> 
 												<?php                 
 												}
 												?>
@@ -92,7 +96,7 @@
 												if($_SESSION['name']==$row["writer"])
 												{
 												?>				
-												<button type="button" class="btn_edit gray" onclick="location.href='/newnew/ReviewDel_result.php?idx=<?=$idx?>'; return false;"> delete</button>  
+												<button type="button" class="btn_edit gray" onclick="location.href='/ReviewDel_result.php?idx=<?=$idx?>'; return false;"> delete</button>  
 												<?php                 
 												}
 												?>
@@ -103,18 +107,18 @@
 			</div>
 								
 								<!-- 댓글이 보여지는 영역 -->
-								<div class="field" id="comment-container">
+								<!-- <div class="field" id="comment-container">
 								</div>
 
 								<form id="comment-form">
 									<input type="text" id="name" placeholder="이름" required>
 									<textarea id="content" placeholder="댓글 내용" required></textarea>
 									<button type="submit">댓글 작성</button>
-								</form>
+								</form> -->
 								
 								<!-- 뒤로가기 버튼 -->
 								<div>
-									<button type="button" class="primary" onclick="location.href='/newnew/ReviewBoard.php';"> back</button>	<br>
+									<button type="button" class="primary" onclick="location.href='/ReviewBoard.php';"> back</button>	<br>
 								</div>
 								<br>
 								

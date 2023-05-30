@@ -1,52 +1,8 @@
 <?php
-    $con = mysqli_connect("localhost", "pdy1201", "AA1205dnflwlq!!", "pdy1201");
-		// $con = mysqli_connect("localhost", "root", "qwer", "web_booboon");
-    mysqli_query($con,'SET NAMES utf8');	
-    //세션 데이터에 접근하기 위해 세션 시작
-    if (!session_id()) 
-      {
-        session_start();
-      }
-    $page = (isset($_GET["page"]) && $_GET["page"]) ? $_GET["page"] : 1;
-    if (empty($page)) { $page = 1; }
-    $select_query = "select COUNT(*) as size FROM board";        
-    $result = mysqli_query($con, $select_query); 
-    $row = mysqli_fetch_array($result);
-    $nums = $row['size'];
-    //화면에 목록 줄수
-    $listSize = 10;
-    //페이지 표시 최대 숫자
-    $blockSize = 10; // 추가 !!
-    $prevBlock="";
-    $nextBlock="";
-    $start = ($page - 1) * $listSize;
-    $totalListCount = ceil($nums/ $listSize); // 추가해주기
-    $no = $nums - $start; // 추가
-    $totalBlockCount = ceil($totalListCount/$blockSize);
-    $currentBlock = ceil($page / $blockSize);
-    $startPage = ($currentBlock - 1) * $blockSize + 1;
-    if ($currentBlock >= $totalBlockCount) 
-      {
-        $endPage = $totalListCount;
-      }
-    else
-      {
-        $endPage = $currentBlock * $blockSize;
-      }
-    if ($currentBlock > 1) 
-      {
-        $prevBlock = "
-          <a class='page-link' href='./member_list.php?page=".($startPage - 1)."' aria-label='Previous'>
-          <span aria-hidden='true'>&laquo;</span>
-          </a>";
-      }
-    if ($currentBlock < $totalBlockCount) 
-      {
-         $nextBlock = "
-          <a class='page-link' href='./member_list.php?page=".($endPage + 1)."' aria-label='Next'>
-          <span aria-hidden='true'>&raquo;</span>
-          </a>";
-      }
+  //세션 데이터에 접근하기 위해 세션 시작
+  session_start();
+  $id = $_SESSION['id'];
+  $name = $_SESSION['name'];
 ?>
 
 <!DOCTYPE HTML>
@@ -91,26 +47,27 @@
 								<article id="contact">
 								<form action="ReviewWrite_result.php" enctype="multipart/form-data" method="post">
 										<div class="fields">
-											<div class="field long">	
+											<!-- <div class="field long">	
 												<select id="selMon">
 													<option value="01">영화제목을 선택하세요</option>
 													<option value="data">API 영화제목 기능 추가 예정</option>
 												</select>
-											</div>
+											</div> -->
 											<div class="field quarter">
 												<input type="text" name="writer" id="writer" value="<?php echo $_SESSION["name"]?>"/>
+												<input type="text" name="hit" id="hit" value="0"/>
 											</div>
 											<div class="field long">
 												<input type="text" name="title" id="title" placeholder="Title"/>
 											</div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-											<div class="starRev">
-												<!-- 편의 상 가장 첫번째의 별은 기본으로 class="on"이 되게 설정해주었습니다. -->
+											<!-- <div class="starRev">
+												첫번째 별은 기본으로 ON상태
 												<span class="starR on">★</span>
 												<span class="starR">★</span>
 												<span class="starR">★</span>
 												<span class="starR">★</span>
 												<span class="starR">★</span>
-											</div>
+											</div> -->
 											<div class="field">
 												<textarea name="content" id="content" rows="8" placeholder="Contents"></textarea>
 											</div>
