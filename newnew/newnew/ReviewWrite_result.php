@@ -20,24 +20,24 @@
 	// 	echo("<script>history.back();</script>"); 
 	// 	return;
 	// }
-	// if(!$writer)
-	// {
-	// 	echo "<script>alert('작성자를 입력하세요');</script>"; 
-	// 	echo("<script>history.back();</script>"); 
-	// 	return;
-	// }
-	// if(!$title)
-	// {
-	// 	echo "<script>alert('제목을 입력하세요');</script>"; 
-	// 	echo("<script>history.back();</script>"); 
-	// 	return;
-	// }
-	// if(!$content)
-	// {
-	// 	echo "<script>alert('내용을 입력하세요');</script>"; 
-	// 	echo("<script>history.back();</script>"); 
-	// 	return;
-	// }   
+	if(!$writer)
+	{
+		echo "<script>alert('작성자를 입력하세요');</script>"; 
+		echo("<script>history.back();</script>"); 
+		return;
+	}
+	if(!$title)
+	{
+		echo "<script>alert('제목을 입력하세요');</script>"; 
+		echo("<script>history.back();</script>"); 
+		return;
+	}
+	if(!$content)
+	{
+		echo "<script>alert('내용을 입력하세요');</script>"; 
+		echo("<script>history.back();</script>"); 
+		return;
+	}   
 	
 	
     $statement = mysqli_prepare($con, "INSERT INTO board VALUES (null,?,?,?,?)");

@@ -52,24 +52,25 @@
                             <sup>영화진흥위원회</sup>
                         </a><br/>
                         Use this
-                        <a href="http://me.go.kr/home/web/main.do" target='_blank'>
+                        <a href="https://www.kofic.or.kr/kofic/business/main/main.do" target='_blank'>
                             <sup>Link</sup>
                         </a>, Check More Information</p>
 
                     <!-- 로그인시 이름 표시됨 -->
                     <?php
-                  if($_SESSION['login_check']==true)
-                  {
-                	?>
-                    <h3>
-                        🎞&nbsp&nbspWelcome&nbsp<span style="color: #f77777;">"<?php echo $_SESSION["name"]?>"</span>&nbsp&nbsp🎞
-                    </h3>
+                    if($_SESSION['login_check']==true)
+                    {
+                    ?>
+                        <h3>
+                            🎞&nbsp&nbspWelcome&nbsp<span style="color: #f77777;">"<?php echo $_SESSION["name"]?>"</span>&nbsp&nbsp🎞
+                        </h3>
                     <?php                 
-										}
-									?>
+					}
+					?>
 
                 </div>
             </div>
+            
             <nav>
                 <ul>
                     <li>
@@ -78,72 +79,74 @@
 
                     <!-- 메뉴 박스오피스 버튼 세션 -->
                     <?php
-                  if($_SESSION['login_check']==true)
-                  {
-                ?>
-                    <li class="nav-item">
-                        <a href=".\BoxOfficeday.php">BoxOffice</a>
-                    </li>
-                    <?php                 
-                  }
-                ?>
+                    if($_SESSION['login_check']==true)
+                    {
+                    ?>
+                        <li class="nav-item">
+                            <a href=".\BoxOfficeday.php">BoxOffice</a>
+                        </li>
+                        <?php                 
+                    }
+                    ?>
 
                     <!-- 메뉴 리뷰버튼 세션 -->
                     <?php
-                  if($_SESSION['login_check']==true)
-                  {
-                ?>
-                    <li class="nav-item">
-                        <a href=".\ReviewBoard.php">Review</a>
-                    </li>
-                    <?php                 
-                  }
-                ?>
+                    if($_SESSION['login_check']==true)
+                    {
+                    ?>
+                        <li class="nav-item">
+                            <a href=".\ReviewBoard.php">Review</a>
+                        </li>
+                        <?php                 
+                    }
+                    ?>
 
                     <!-- 메뉴 검색버튼 세션 -->
                     <?php
-                  if($_SESSION['login_check']==true)
-                  {
-                ?>
-                    <li class="nav-item">
-                    <li>
-                        <a href=".\search.php">Search</a>
+                    if($_SESSION['login_check']==true)
+                    {
+                    ?>
+                        <li class="nav-item">
+                        <li>
+                            <a href=".\search.php">Search</a>
+                        </li>
                     </li>
-                </li>
-                <?php                 
-                  }
-                ?>
-
-                <!-- 메뉴 문의버튼 세션 -->
-                <?php
-                  if($_SESSION['login_check']==false)
-                  {
-                ?>
-                <li class="nav-item">
-                    <li>
-                        <a href="#contact">Contact us</a>
-                    </li>
-                </li>
-                <?php                 
-                  }
-                ?>
-
-                <!-- 메뉴 로그인 로그아웃 버튼 세션 -->
-                <li><?php
-  			          if($_SESSION['login_check']==true)
-        			    {
-		            ?>
-                    <a class="menuLink" href="#logout">LogOut</a>
-                <?php                 
-  			          }else
-        			    {
-		            ?>
-                    <a class="menuLink" href=".\login.php">LogIn</a>
                     <?php                 
-      				    }
-	             ?></li>
-            </ul>
-        </nav>
+                    }
+                    ?>
+
+                    <!-- 메뉴 문의버튼 세션 -->
+                    <?php
+                    if($_SESSION['login_check']==false)
+                    {
+                    ?>
+                    <li class="nav-item">
+                        <li>
+                            <a href="#contact">Contact us</a>
+                        </li>
+                    </li>
+                    <?php                 
+                    }
+                    ?>
+
+                    <!-- 메뉴 로그인 로그아웃 버튼 세션 -->
+                    <li>
+                        <?php
+                        if($_SESSION['login_check']==true)
+                            {
+                        ?>
+                        <a class="menuLink" href="#logout">LogOut</a>
+                        <?php                 
+                        }else
+                            {
+                        ?>
+                        <a class="menuLink" href=".\login.php">LogIn</a>
+                        <?php                 
+                            }
+                        ?>
+                    </li>
+                </ul>
+            </nav>
     </header>
 
     <!-- Main -->

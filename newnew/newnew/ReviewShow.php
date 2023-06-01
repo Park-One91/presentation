@@ -68,15 +68,7 @@
 											<div class="field quarter">
 												<pre><code><h2><?=$title?></h2>- <?=$writer?> -</code></pre>
 											</div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-											
-											<!-- 별점 레이아웃 - 첫번째 별점은 항상 표시되게 on으로 -->
-											<!-- <div class="starRev">
-												<span class="starR on">★</span>
-												<span class="starR">★</span>
-												<span class="starR">★</span>
-												<span class="starR">★</span>
-												<span class="starR">★</span>
-											</div>/ -->
+										
 											<br>
 											<div class="field">
 											<pre><code><?=$content?></code></pre>
@@ -95,27 +87,16 @@
 												<?php
 												if ($_SESSION['name'] == $row["writer"] || $_SESSION['id'] == 'admin123' || $_SESSION['name'] == '관리자') {
 												?>				
-													<button type="button" class="btn_edit gray" onclick="location.href='/ReviewDel_result.php?idx=<?=$idx?>'; return false;">delete</button>  
+													<button type="button" class="btn_edit gray" onclick="location.href='/ReviewDel_result.php?idx=<?=$idx?>'; return false;">delete</button>
 												<?php                 
 												}
 												?>
 											</div>
 										</div>
 
-
 									</div>
 			</div>
-								
-								<!-- 댓글이 보여지는 영역 -->
-								<!-- <div class="field" id="comment-container">
-								</div>
-
-								<form id="comment-form">
-									<input type="text" id="name" placeholder="이름" required>
-									<textarea id="content" placeholder="댓글 내용" required></textarea>
-									<button type="submit">댓글 작성</button>
-								</form> -->
-								
+														
 								<!-- 뒤로가기 버튼 -->
 								<div>
 									<button type="button" class="primary" onclick="location.href='/ReviewBoard.php';"> back</button>	<br>
@@ -227,6 +208,23 @@
 									</ul>
 								</form>
 							</article>
+
+					<!-- Del -->
+					<article id="delete">
+								<h2 class="major">Delete</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="email">게시물을 삭제 하시겠습니까?</label>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="button" onclick="location.href='ReviewDel_result.php'" value="Delete" class="primary" /></li>
+										<li><input type="button" value="Back" onClick="history.go(-1)"></li>
+										
+									</ul>
+								</form>
+							</article>		
 
 						</div>
 

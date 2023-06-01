@@ -15,7 +15,6 @@
     $totalListCount = ceil($nums / $listSize);
     $no = $nums - $start;
     $totalBlockCount = ceil($totalListCount / $blockSize);
-    
 ?>
 
 <!DOCTYPE HTML>
@@ -28,6 +27,7 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css"/></noscript>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
+
 <body class="is-preload">
 <!-- Wrapper -->
 <div id="wrapper">
@@ -37,8 +37,8 @@
         ?>
         <div class="logInfo">
             <pre><code>ID&nbsp:&nbsp<span
-                            style="color: #f77777;"><?php echo $_SESSION["id"] ?></span>&nbsp&nbsp&nbsp Name&nbsp:&nbsp<span
-                            style="color: #f77777;"><?php echo $_SESSION["name"] ?></span></code></pre>
+              style="color: #f77777;"><?php echo $_SESSION["id"] ?></span>&nbsp&nbsp&nbsp Name&nbsp:&nbsp<span
+              style="color: #f77777;"><?php echo $_SESSION["name"] ?></span></code></pre>
         </div>
         <?php
     }
@@ -107,6 +107,7 @@
                 </section>
             </div>
         </div>
+        
         <nav>
             <ul>
                 <!-- 메뉴 홈 버튼 세션  -->
@@ -175,6 +176,7 @@
                     ?></li>
             </ul>
         </nav>
+        
     </header>
     <!-- Main -->
     <div id="main">

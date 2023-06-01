@@ -68,15 +68,15 @@
 
 				<!-- 로그인시 아이디와 이름을 표시해줌 -->
 				<?php
-                if($_SESSION['login_check']==true)
-                {
-                ?>				
-                <div class="logInfo">
-								<pre><code>ID&nbsp:&nbsp<span style="color: #f77777;"><?php echo $_SESSION["id"]?></span>&nbsp&nbsp&nbsp Name&nbsp:&nbsp<span style="color: #f77777;"><?php echo $_SESSION["name"]?></span></code></pre>
-                </div>
-                <?php                 
-                }
-                ?>
+        if($_SESSION['login_check']==true)
+        {
+        ?>				
+					<div class="logInfo">
+						<pre><code>ID&nbsp:&nbsp<span style="color: #f77777;"><?php echo $_SESSION["id"]?></span>&nbsp&nbsp&nbsp Name&nbsp:&nbsp<span style="color: #f77777;"><?php echo $_SESSION["name"]?></span></code></pre>
+					</div>
+        <?php                 
+        }
+        ?>
 
 				<!-- Header -->
 					<header id="header">
