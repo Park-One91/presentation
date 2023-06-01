@@ -101,7 +101,6 @@ display :inline;
 	display: inline;
 }
 
-
 .asd {
 	display: flex;
 	text-align: center;
@@ -111,7 +110,6 @@ display :inline;
 	display: flex;
 	text-align: center;
 	margin-left: 3.5%;
-	
 }
 
 /* 게시판 페이징 */

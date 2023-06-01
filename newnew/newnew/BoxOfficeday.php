@@ -50,12 +50,12 @@
             // 연 미리 설정
             // var year = newDate.getYear()+1;
             // $("#selYear").val(year);
-            // 월 미리 설정
-            var mon = newDate.getMonth()+1;
+            // 월 미리 설정 원래는 +1 !!!!
+            var mon = newDate.getMonth()+0;
             if(mon < 10) mon = "0"+mon;
             $("#selMon").val(mon);
-            // 일 미리 설정
-            var day = newDate.getDate()-1;
+            // 일 미리 설정 원래는 -1 !!!!
+            var day = newDate.getDate()+30;
             if(day < 10) day = "0"+day;
             $("#selDay").val(day);
         }

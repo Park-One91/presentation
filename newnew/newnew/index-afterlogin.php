@@ -49,11 +49,11 @@
                             <span style="color: #f77777;">c</span>inema</h1><br/>
                         <!-- <img src="images/bo.png" alt=""> -->
                         <p>Our contents are based on the
-                            <sup>영화진흥위원회</sup>
+                            영화진흥위원회
                         </a><br/>
                         Use this
                         <a href="https://www.kofic.or.kr/kofic/business/main/main.do" target='_blank'>
-                            <sup>Link</sup>
+                            Link
                         </a>, Check More Information</p>
 
                     <!-- 로그인시 이름 표시됨 -->

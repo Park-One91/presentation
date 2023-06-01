@@ -20,19 +20,19 @@
 <!-- API 데이터 가져오기 -->
     <style>
       #msg {
-				border-radius: 5px;
-              border: 1px solid white;
-              padding: 10px;
-              margin-top: 20px;
-              margin-bottom: 20px;
-              width: 100%;
-              height: 100%;
-              font-size: 14px;
-              text-align: left;
-              float: right;
-              font-size : 100%;
+			border-radius: 5px;
+            border: 1px solid white;
+            padding: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+            height: 100%;
+            font-size: 14px;
+            text-align: left;
+            float: right;
+            font-size : 100%;
           }
-          a {
+        a {
             text-decoration: none;
         }
     </style>
@@ -49,12 +49,12 @@
             // 연 미리 설정
             // var year = newDate.getYear()+1;
             // $("#selYear").val(year);
-            // 월 미리 설정
-            var mon = newDate.getMonth()+1;
+            // 월 미리 설정 기본월 일 설정 초기화 해라
+            var mon = newDate.getMonth()+0;
             if(mon < 10) mon = "0"+mon;
             $("#selMon").val(mon);
             // 일 미리 설정
-            var day = newDate.getDate()-5;
+            var day = newDate.getDate()+27;
             if(day < 10) day = "0"+day;
             $("#selDay").val(day);
         }
@@ -221,7 +221,6 @@
 								<li><a href=".\BoxOfficeweek.php" onclick="event.preventDefault();" class="button primary">주간</a></li>
 							</ul>
                             
-
                             <form name="myform">
                                 <div class="field">
                                     
@@ -305,6 +304,7 @@
                 
 							</div>
 						</div>
+                        
 						<nav>
 							<ul>
 								<!-- 메뉴 홈 버튼 세션  -->
